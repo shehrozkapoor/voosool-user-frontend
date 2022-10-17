@@ -1,21 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:voosool_flutter/screens/mobile_view/login_screen.dart';
 import 'package:voosool_flutter/theme.dart';
 import 'package:voosool_flutter/utils/components.dart';
-import 'package:voosool_flutter/utils/functions.dart';
 
-class SignupForm extends StatefulWidget {
-  const SignupForm({super.key});
+class ForgetPassword extends StatefulWidget {
+  const ForgetPassword({super.key});
 
   @override
-  State<SignupForm> createState() => _SignupFormState();
+  State<ForgetPassword> createState() => _ForgetPasswordState();
 }
 
-class _SignupFormState extends State<SignupForm> {
+class _ForgetPasswordState extends State<ForgetPassword> {
   final _formKey = GlobalKey<FormState>();
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -41,11 +38,7 @@ class _SignupFormState extends State<SignupForm> {
                 key: _formKey,
                 child: Column(
                   children: <Widget>[
-                    CustomField("Full Name", (value) => {}),
-                    CustomField("Email", (value) => {}),
-                    CustomField("Phone number", (value) => {}),
-                    CustomField("Password", (value) => {}),
-                    CustomField("Confirm password", (value) => {}),
+                    CustomField("Email or Phone", (value) => {}),
                     Container(
                       width: 200,
                       margin: const EdgeInsets.only(top: 10),
@@ -68,43 +61,8 @@ class _SignupFormState extends State<SignupForm> {
                               (states) => Colors.black,
                             ),
                           ),
-                          child: const Text("Signup with Email.")),
+                          child: const Text("Send OTP")),
                     ),
-                    Container(
-                      margin: const EdgeInsets.only(top: 10, bottom: 10),
-                      child: const Text("Or"),
-                    ),
-                    SocialSignupButton(
-                      "Signup with Google",
-                      "assets/google.png",
-                    ),
-                    SocialSignupButton(
-                      "Signup with Facebook",
-                      "assets/facebook.png",
-                    ),
-                    Container(
-                      margin: EdgeInsets.only(top: 10),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          const Text("Already have an account? "),
-                          GestureDetector(
-                            onTap: () => {
-                              ReplaceScreen(
-                                context,
-                                LoginScreen(),
-                              ),
-                            },
-                            child: const Text(
-                              "Login",
-                              style: TextStyle(
-                                decoration: TextDecoration.underline,
-                              ),
-                            ),
-                          )
-                        ],
-                      ),
-                    )
                   ],
                 ),
               ),
@@ -122,10 +80,10 @@ class _SignupFormState extends State<SignupForm> {
                   ),
                 ),
                 child: const Text(
-                  "Signup",
+                  "Forget Password",
                   style: TextStyle(
                     color: Colors.white,
-                    fontSize: 24,
+                    fontSize: 18,
                   ),
                 ),
               ),

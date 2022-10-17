@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:voosool_flutter/screens/mobile_view/forget_psasword.dart';
+import 'package:voosool_flutter/screens/mobile_view/login_screen.dart';
 import 'package:voosool_flutter/screens/mobile_view/signup_form.dart';
 import 'package:voosool_flutter/screens/splash_screen.dart';
 
@@ -17,7 +19,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: SignupForm(),
+      home: SplashScreen(),
     );
   }
 }
