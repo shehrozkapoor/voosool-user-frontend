@@ -4,7 +4,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:voosool_flutter/theme.dart';
 
 class SignupForm extends StatefulWidget {
-  SignupForm({super.key});
+  const SignupForm({super.key});
 
   @override
   State<SignupForm> createState() => _SignupFormState();
@@ -45,7 +45,7 @@ class _SignupFormState extends State<SignupForm> {
                     CustomField("Confirm password", (value) => {}),
                     Container(
                       width: 200,
-                      margin: EdgeInsets.only(top: 10),
+                      margin: const EdgeInsets.only(top: 10),
                       height: 50,
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(
@@ -112,7 +112,7 @@ class _SignupFormState extends State<SignupForm> {
                     Radius.circular(40),
                   ),
                 ),
-                child: Text(
+                child: const Text(
                   "Signup",
                   style: TextStyle(
                     color: Colors.white,
