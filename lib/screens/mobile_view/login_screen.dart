@@ -51,7 +51,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           const Text("Forget password? "),
                           GestureDetector(
                             onTap: () {
-                              NextScreent(
+                              NextScreen(
                                 context,
                                 ForgetPassword(),
                               );

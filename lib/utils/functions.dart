@@ -9,7 +9,7 @@ void ReplaceScreen(BuildContext context, Widget screen) {
   );
 }
 
-void NextScreent(BuildContext context, Widget screen) {
+void NextScreen(BuildContext context, Widget screen) {
   Navigator.push(
     context,
     MaterialPageRoute(

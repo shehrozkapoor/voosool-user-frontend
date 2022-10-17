@@ -1,27 +1,20 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:voosool_flutter/screens/mobile_view/change_password.dart';
+import 'package:voosool_flutter/screens/mobile_view/login_screen.dart';
 import 'package:voosool_flutter/theme.dart';
 import 'package:voosool_flutter/utils/components.dart';
 import 'package:voosool_flutter/utils/functions.dart';
 
-class ForgetPassword extends StatefulWidget {
-  ForgetPassword({super.key});
-  bool otpSent = false;
+class ChangePassword extends StatefulWidget {
+  const ChangePassword({super.key});
 
   @override
-  State<ForgetPassword> createState() => _ForgetPasswordState();
+  State<ChangePassword> createState() => _ChangePasswordState();
 }
 
-class _ForgetPasswordState extends State<ForgetPassword> {
+class _ChangePasswordState extends State<ChangePassword> {
   final _formKey = GlobalKey<FormState>();
-
-  void SendOtp() {
-    widget.otpSent = true;
-    setState(() {});
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,9 +40,8 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                 key: _formKey,
                 child: Column(
                   children: <Widget>[
-                    widget.otpSent
-                        ? CustomField("Enter OTP", (value) => {})
-                        : CustomField("Email or Phone", (value) => {}),
+                    CustomField("Password", (value) => {}),
+                    CustomField("Confirm password", (value) => {}),
                     Container(
                       width: 200,
                       margin: const EdgeInsets.only(top: 10),
@@ -59,40 +51,25 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                           10,
                         ),
                       ),
-                      child: widget.otpSent
-                          ? ElevatedButton(
-                              onPressed: () => {
-                                    NextScreen(
-                                      context,
-                                      ChangePassword(),
-                                    )
-                                  },
-                              style: ButtonStyle(
-                                shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30.0),
-                                  ),
-                                ),
-                                backgroundColor: MaterialStateColor.resolveWith(
-                                  (states) => Colors.black,
-                                ),
+                      child: ElevatedButton(
+                          onPressed: () => {
+                                ReplaceScreen(
+                                  context,
+                                  LoginScreen(),
+                                )
+                              },
+                          style: ButtonStyle(
+                            shape: MaterialStateProperty.all<
+                                RoundedRectangleBorder>(
+                              RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(30.0),
                               ),
-                              child: const Text("Validate"))
-                          : ElevatedButton(
-                              onPressed: () => {SendOtp()},
-                              style: ButtonStyle(
-                                shape: MaterialStateProperty.all<
-                                    RoundedRectangleBorder>(
-                                  RoundedRectangleBorder(
-                                    borderRadius: BorderRadius.circular(30.0),
-                                  ),
-                                ),
-                                backgroundColor: MaterialStateColor.resolveWith(
-                                  (states) => Colors.black,
-                                ),
-                              ),
-                              child: const Text("Send OTP")),
+                            ),
+                            backgroundColor: MaterialStateColor.resolveWith(
+                              (states) => Colors.black,
+                            ),
+                          ),
+                          child: const Text("Reset my password")),
                     ),
                   ],
                 ),
@@ -111,7 +88,7 @@ class _ForgetPasswordState extends State<ForgetPassword> {
                   ),
                 ),
                 child: const Text(
-                  "Forgot Password",
+                  "Change Password",
                   style: TextStyle(
                     color: Colors.white,
                     fontSize: 18,
