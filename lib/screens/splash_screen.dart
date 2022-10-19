@@ -37,7 +37,7 @@ class SplashScreen extends StatelessWidget {
       ),
       splashTransition: SplashTransition.fadeTransition,
       pageTransitionType: PageTransitionType.bottomToTop,
-      nextScreen: SignupForm(),
+      nextScreen: Homepage(),
       backgroundColor: primary,
     );
   }
