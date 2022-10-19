@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:voosool_flutter/screens/mobile_view/forget_psasword.dart';
+import 'package:voosool_flutter/screens/mobile_view/home.dart';
 import 'package:voosool_flutter/screens/mobile_view/signup_form.dart';
 import 'package:voosool_flutter/theme.dart';
 import 'package:voosool_flutter/utils/components.dart';
@@ -76,7 +77,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                       ),
                       child: ElevatedButton(
-                          onPressed: () => {},
+                          onPressed: () => {ReplaceScreen(context, Homepage())},
                           style: ButtonStyle(
                             shape: MaterialStateProperty.all<
                                 RoundedRectangleBorder>(

@@ -4,7 +4,6 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:voosool_flutter/screens/mobile_view/home.dart';
 
 import 'package:page_transition/page_transition.dart';
-import 'package:voosool_flutter/screens/mobile_view/signup_form.dart';
 import 'package:voosool_flutter/theme.dart';
 
 class SplashScreen extends StatelessWidget {
@@ -37,7 +36,7 @@ class SplashScreen extends StatelessWidget {
       ),
       splashTransition: SplashTransition.fadeTransition,
       pageTransitionType: PageTransitionType.bottomToTop,
-      nextScreen: SignupForm(),
+      nextScreen: Homepage(),
       backgroundColor: primary,
     );
   }
