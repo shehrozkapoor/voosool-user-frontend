@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:voosool_flutter/models/food.dart';
+import 'package:voosool_flutter/utils/functions.dart';
+import 'package:voosool_flutter/screens/mobile_view/food_item_detail.dart';
 
 Container SocialSignupButton(String _with, String icon) {
   return Container(
@@ -65,6 +68,7 @@ Container CustomField(String Name, Function action) {
     ),
   );
 }
+
 Container HomepageCards(BuildContext context) {
   return Container(
     child: Row(
@@ -296,9 +300,16 @@ Container Restaurant(BuildContext context, String name, String image) {
               Radius.circular(20),
             ),
           ),
-          child: Image.asset(
-            image,
-            fit: BoxFit.cover,
+          child: ClipRRect(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
+            ),
+            child: Image.asset(
+              image,
+              width: MediaQuery.of(context).size.width,
+              fit: BoxFit.fill,
+            ),
           ),
         ),
         Text(name)
@@ -307,7 +318,7 @@ Container Restaurant(BuildContext context, String name, String image) {
   );
 }
 
-Widget FoodMenus(BuildContext context) {
+Widget FoodMenus(BuildContext context, {required List<Food> foods}) {
   return Column(
     children: [
       Container(
@@ -323,16 +334,13 @@ Widget FoodMenus(BuildContext context) {
       ),
       Container(
         width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height * .81,
+        height: MediaQuery.of(context).size.height * .80,
         child: GridView.count(
           crossAxisCount: 2,
           children: List.generate(
             4,
             (index) {
-              return Center(
-                child:
-                    Restaurant(context, "Product 1", "assets/restaurant.png"),
-              );
+              return Menu(context, "Product 1", "assets/restaurant.png");
             },
           ),
         ),
@@ -341,33 +349,76 @@ Widget FoodMenus(BuildContext context) {
   );
 }
 
-Container Menu(BuildContext context, String name, String image) {
-  return Container(
-    decoration: const BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.all(Radius.circular(20)),
-    ),
-    margin: EdgeInsets.all(20),
-    width: MediaQuery.of(context).size.width * .40,
-    child: Column(
-      children: [
-        Container(
-          decoration: const BoxDecoration(
-            borderRadius: BorderRadius.all(
-              Radius.circular(
-                20,
+Widget Menu(BuildContext context, String name, String image) {
+  return GestureDetector(
+    onTap: () => {
+      NextScreen(context, FoodDetail()),
+    },
+    child: Container(
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(20)),
+      ),
+      margin: EdgeInsets.all(20),
+      width: MediaQuery.of(context).size.width * .40,
+      child: Column(
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(
+                Radius.circular(
+                  20,
+                ),
+              ),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
+              ),
+              child: Image.asset(
+                image,
+                width: MediaQuery.of(context).size.width,
+                fit: BoxFit.fill,
               ),
             ),
           ),
-          child: Image.asset(
-            image,
-            fit: BoxFit.cover,
-          ),
-        ),
-        Text(
-          name,
-        )
-      ],
+          Text(
+            name,
+          )
+        ],
+      ),
     ),
   );
+}
+
+class CustomCheckbox extends StatefulWidget {
+  CustomCheckbox({super.key, required this.text});
+  String text;
+  bool isChecked = false;
+
+  @override
+  State<CustomCheckbox> createState() => _CustomCheckboxState();
+}
+
+class _CustomCheckboxState extends State<CustomCheckbox> {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Checkbox(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          value: widget.isChecked,
+          onChanged: (bool? boolvalue) {
+            setState(() {
+              widget.isChecked = !widget.isChecked;
+            });
+          },
+          // splashRadius: 50,
+        ),
+        Text(widget.text),
+      ],
+    );
+  }
 }

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:voosool_flutter/screens/mobile_view/food_item.dart';
 import 'package:voosool_flutter/screens/mobile_view/forget_psasword.dart';
 import 'package:voosool_flutter/screens/mobile_view/login_screen.dart';
 import 'package:voosool_flutter/screens/mobile_view/signup_form.dart';
@@ -20,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: primary,
       ),
-      home: SplashScreen(),
+      home: FoodItems(),
     );
   }
 }
