@@ -133,7 +133,7 @@ class _UserAccountState extends State<UserAccount> {
               child: Text(
                 name,
                 textAlign: TextAlign.left,
-                style: TextStyle(fontSize: 20),
+                style: TextStyle(fontSize: 18),
               ),
             ),
           ],
