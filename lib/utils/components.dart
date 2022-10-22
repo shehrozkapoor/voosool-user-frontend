@@ -46,7 +46,51 @@ Container CustomField(String Name, Function action) {
         ),
         TextFormField(
           decoration: InputDecoration(
-            contentPadding: const EdgeInsets.only(left: 15, right: 15),
+            contentPadding: const EdgeInsets.only(
+              left: 15,
+              right: 15,
+            ),
+            border: OutlineInputBorder(
+              borderSide: const BorderSide(
+                color: Colors.white,
+              ),
+              borderRadius: BorderRadius.circular(50),
+            ),
+            // hintText: "0",
+          ),
+          // The validator receives the text that the user has entered.
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Please enter some text';
+            }
+            return null;
+          },
+          onChanged: (value) => action(value),
+        ),
+      ],
+    ),
+  );
+}
+
+Container CustomField2(String Name, Function action) {
+  return Container(
+    margin: EdgeInsets.only(top: 10),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          margin: EdgeInsets.only(top: 10, bottom: 10),
+          child: Text(
+            Name,
+            style: TextStyle(fontSize: 18),
+          ),
+        ),
+        TextFormField(
+          decoration: InputDecoration(
+            contentPadding: const EdgeInsets.only(
+              left: 15,
+              right: 15,
+            ),
             border: OutlineInputBorder(
               borderSide: const BorderSide(
                 color: Colors.white,
