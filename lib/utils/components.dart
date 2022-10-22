@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:voosool_flutter/models/food.dart';
+import 'package:voosool_flutter/models/food.dart' as FoodModel;
 import 'package:voosool_flutter/utils/functions.dart';
 import 'package:voosool_flutter/screens/mobile_view/food_item_detail.dart';
 
@@ -318,7 +318,7 @@ Container Restaurant(BuildContext context, String name, String image) {
   );
 }
 
-Widget FoodMenus(BuildContext context, {required List<Food> foods}) {
+Widget FoodMenus(BuildContext context, {required List<FoodModel.Food> foods}) {
   return Column(
     children: [
       Container(
@@ -421,4 +421,33 @@ class _CustomCheckboxState extends State<CustomCheckbox> {
       ],
     );
   }
+}
+
+Widget Food(BuildContext context, String name, String image) {
+  return Container(
+    decoration: const BoxDecoration(
+      // color: Colors.red,
+      borderRadius: BorderRadius.all(
+        Radius.circular(20),
+      ),
+    ),
+    margin: const EdgeInsets.all(5),
+    width: MediaQuery.of(context).size.width * .45,
+    child: Column(
+      children: [
+        Container(
+          decoration: const BoxDecoration(
+            borderRadius: BorderRadius.all(
+              Radius.circular(20),
+            ),
+          ),
+          child: Image.asset(
+            image,
+            fit: BoxFit.cover,
+          ),
+        ),
+        Text(name)
+      ],
+    ),
+  );
 }

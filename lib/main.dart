@@ -21,7 +21,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: primary,
       ),
-      home: FoodItems(),
+      home: SplashScreen(),
     );
   }
 }

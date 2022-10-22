@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:voosool_flutter/models/order.dart';
+import 'package:voosool_flutter/utils/components.dart';
 
 class Cart extends StatefulWidget {
   Cart({super.key});
@@ -141,35 +142,6 @@ class _CartState extends State<Cart> {
               ],
             ),
           )
-        ],
-      ),
-    );
-  }
-
-  Widget Food(BuildContext context, String name, String image) {
-    return Container(
-      decoration: const BoxDecoration(
-        // color: Colors.red,
-        borderRadius: BorderRadius.all(
-          Radius.circular(20),
-        ),
-      ),
-      margin: const EdgeInsets.all(10),
-      width: MediaQuery.of(context).size.width * .45,
-      child: Column(
-        children: [
-          Container(
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.all(
-                Radius.circular(20),
-              ),
-            ),
-            child: Image.asset(
-              image,
-              fit: BoxFit.cover,
-            ),
-          ),
-          Text(name)
         ],
       ),
     );

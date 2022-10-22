@@ -1,6 +1,7 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:voosool_flutter/screens/mobile_view/checkout.dart';
 import 'package:voosool_flutter/screens/mobile_view/home.dart';
 
 import 'package:page_transition/page_transition.dart';
@@ -37,7 +38,7 @@ class SplashScreen extends StatelessWidget {
       ),
       splashTransition: SplashTransition.fadeTransition,
       pageTransitionType: PageTransitionType.bottomToTop,
-      nextScreen: Homepage(),
+      nextScreen: Checkout(),
       backgroundColor: primary,
     );
   }
