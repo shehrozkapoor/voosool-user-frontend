@@ -1,11 +1,14 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:voosool_flutter/screens/mobile_view/about.dart';
 import 'package:voosool_flutter/screens/mobile_view/affiliation.dart';
 import 'package:voosool_flutter/screens/mobile_view/checkout.dart';
 import 'package:voosool_flutter/screens/mobile_view/home.dart';
 
 import 'package:page_transition/page_transition.dart';
+import 'package:voosool_flutter/screens/mobile_view/home_view.dart';
+import 'package:voosool_flutter/screens/mobile_view/login_screen.dart';
 import 'package:voosool_flutter/screens/mobile_view/my_information.dart';
 import 'package:voosool_flutter/screens/mobile_view/signup_form.dart';
 import 'package:voosool_flutter/screens/mobile_view/wallet.dart';
@@ -41,7 +44,7 @@ class SplashScreen extends StatelessWidget {
       ),
       splashTransition: SplashTransition.fadeTransition,
       pageTransitionType: PageTransitionType.bottomToTop,
-      nextScreen: Affiliation(),
+      nextScreen: LoginScreen(),
       backgroundColor: primary,
     );
   }

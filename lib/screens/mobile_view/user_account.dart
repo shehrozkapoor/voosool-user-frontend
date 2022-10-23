@@ -1,6 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
+import 'package:voosool_flutter/screens/mobile_view/about.dart';
+import 'package:voosool_flutter/screens/mobile_view/affiliation.dart';
+import 'package:voosool_flutter/screens/mobile_view/my_information.dart';
+import 'package:voosool_flutter/screens/mobile_view/wallet.dart';
+
+import '../../utils/functions.dart';
 
 class UserAccount extends StatefulWidget {
   const UserAccount({super.key});
@@ -48,7 +54,9 @@ class _UserAccountState extends State<UserAccount> {
               Icons.info_outline_rounded,
               size: 35,
             ),
-            () => {},
+            () => {
+              NextScreen(context, MyInformation()),
+            },
           ),
           Button(
               "My Orders",
@@ -63,7 +71,7 @@ class _UserAccountState extends State<UserAccount> {
               Icons.wallet,
               size: 35,
             ),
-            () => {},
+            () => {NextScreen(context, MyWallet())},
           ),
           Button(
             "Affiliate Partner",
@@ -71,7 +79,7 @@ class _UserAccountState extends State<UserAccount> {
               Icons.card_giftcard,
               size: 35,
             ),
-            () => {},
+            () => {NextScreen(context, Affiliation())},
           ),
           Button(
             "About Us",
@@ -79,7 +87,7 @@ class _UserAccountState extends State<UserAccount> {
               Icons.shield_moon_outlined,
               size: 35,
             ),
-            () => {},
+            () => {NextScreen(context, AboutUs())},
           ),
           Button(
             "Logout",

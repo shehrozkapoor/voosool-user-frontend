@@ -68,7 +68,7 @@ class Affiliation extends StatelessWidget {
               ),
               child: Center(
                 child: Column(
-                  children: [
+                  children: const [
                     Text("How it works?"),
                     Text(
                         "Share your code with friends and they’lleach get free delivery on their first 3orders."),
