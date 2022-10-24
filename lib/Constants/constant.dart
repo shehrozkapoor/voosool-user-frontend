@@ -59,22 +59,30 @@ confirmPassword(String Name, Function action) {
       children: [
         Text(
           Name,
+          style: const TextStyle(fontWeight: FontWeight.w500),
         ),
         const SizedBox(height: 5.0,),
         TextFormField(
           decoration: InputDecoration(
-            suffixIcon: const Icon(Icons.remove_red_eye, color: Colors.white,),
-            contentPadding: const EdgeInsets.only(
-              left: 15,
-              right: 15,
-            ),
-            border: OutlineInputBorder(
-              borderSide: const BorderSide(
-                color: Colors.white,
+              suffixIcon: const Icon(Icons.remove_red_eye, color: Colors.white,),
+              contentPadding: const EdgeInsets.only(
+                left: 15,
+                right: 15,
               ),
-              borderRadius: BorderRadius.circular(50),
-            ),
-            // hintText: "0",
+              border: OutlineInputBorder(
+                borderSide: const BorderSide(
+                  color: Colors.white,
+                ),
+                borderRadius: BorderRadius.circular(50),
+              ),
+              focusedBorder:  OutlineInputBorder(
+                borderSide: const BorderSide(color: Colors.white),
+                borderRadius: BorderRadius.circular(50),
+              ),
+              enabledBorder:  OutlineInputBorder(
+                borderSide: const BorderSide(color: Colors.white),
+                borderRadius: BorderRadius.circular(50),
+              )
           ),
           // The validator receives the text that the user has entered.
           validator: (value) {
