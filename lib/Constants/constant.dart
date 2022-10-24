@@ -11,6 +11,7 @@ passwordTextField(String Name, Function action) {
       children: [
         Text(
           Name,
+          style: const TextStyle(fontWeight: FontWeight.w500),
         ),
         const SizedBox(height: 5.0,),
         TextFormField(
@@ -26,7 +27,14 @@ passwordTextField(String Name, Function action) {
               ),
               borderRadius: BorderRadius.circular(50),
             ),
-            // hintText: "0",
+            focusedBorder:  OutlineInputBorder(
+              borderSide: const BorderSide(color: Colors.white),
+              borderRadius: BorderRadius.circular(50),
+            ),
+              enabledBorder:  OutlineInputBorder(
+                borderSide: const BorderSide(color: Colors.white),
+                borderRadius: BorderRadius.circular(50),
+              )
           ),
           // The validator receives the text that the user has entered.
           validator: (value) {

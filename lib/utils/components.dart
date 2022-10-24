@@ -5,29 +5,21 @@ import 'package:voosool_flutter/screens/mobile_view/food_item_detail.dart';
 
 Container SocialSignupButton(String _with, String icon) {
   return Container(
-    margin: EdgeInsets.only(top: 10),
+    margin: const EdgeInsets.only(top: 10),
     height: 50,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(
         10,
       ),
     ),
-    child: ElevatedButton(
-      onPressed: () => {},
-      style: ButtonStyle(
-        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30.0),
-          ),
-        ),
-        backgroundColor: MaterialStateColor.resolveWith(
-          (states) => Colors.black,
-        ),
-      ),
+    child: MaterialButton(
+      onPressed: (){},
+      color: Colors.black,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Text(_with, textAlign: TextAlign.center),
+          Text(_with, textAlign: TextAlign.center, style: const TextStyle(color: Colors.white, fontSize: 17),),
           Image.asset(icon),
         ],
       ),
@@ -43,6 +35,7 @@ Container CustomField(String Name, Function action) {
       children: [
         Text(
           Name,
+          style: const TextStyle(fontWeight: FontWeight.w500),
         ),
         const SizedBox(height: 5.0,),
         TextFormField(
@@ -57,7 +50,14 @@ Container CustomField(String Name, Function action) {
               ),
               borderRadius: BorderRadius.circular(50),
             ),
-            // hintText: "0",
+              focusedBorder:  OutlineInputBorder(
+                borderSide: const BorderSide(color: Colors.white),
+                borderRadius: BorderRadius.circular(50),
+              ),
+              enabledBorder:  OutlineInputBorder(
+                borderSide: const BorderSide(color: Colors.white),
+                borderRadius: BorderRadius.circular(50),
+              )
           ),
           // The validator receives the text that the user has entered.
           validator: (value) {
