@@ -37,13 +37,14 @@ Container SocialSignupButton(String _with, String icon) {
 
 Container CustomField(String Name, Function action) {
   return Container(
-    margin: EdgeInsets.only(top: 10),
+    margin: const EdgeInsets.only(top: 10),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           Name,
         ),
+        const SizedBox(height: 5.0,),
         TextFormField(
           decoration: InputDecoration(
             contentPadding: const EdgeInsets.only(
@@ -71,6 +72,8 @@ Container CustomField(String Name, Function action) {
     ),
   );
 }
+
+
 
 Container CustomField2(String Name, Function action) {
   return Container(

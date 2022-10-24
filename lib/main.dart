@@ -17,11 +17,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Vasool',
+      debugShowCheckedModeBanner: false,
+      title: 'Vosool',
       theme: ThemeData(
         primaryColor: primary,
       ),
-      home: SplashScreen(),
+      home: const SignupForm(),
     );
   }
 }
