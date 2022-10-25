@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../theme.dart';
+import '../../desktop_web_view/home.dart';
 
 class HomeLocation extends StatefulWidget {
   const HomeLocation({Key? key}) : super(key: key);
@@ -25,12 +26,17 @@ class _HomeLocationState extends State<HomeLocation> {
                   const Spacer(),
                   Image.asset("assets/Vector.png"),
                   const SizedBox(width: 14,),
-                  Padding(
-                    padding: const EdgeInsets.only(right: 15.0),
-                    child: CircleAvatar(
-                      radius: 15.0,
-                      backgroundColor: circleAvatarBackgroundShade,
-                      child: const Icon(Icons.person, color: Colors.black,),
+                  InkWell(
+                    onTap: (){
+                      Navigator.push(context, MaterialPageRoute(builder: (ctx) => Homepage()));
+                    },
+                    child: Padding(
+                      padding: const EdgeInsets.only(right: 15.0),
+                      child: CircleAvatar(
+                        radius: 15.0,
+                        backgroundColor: circleAvatarBackgroundShade,
+                        child: const Icon(Icons.person, color: Colors.black,),
+                      ),
                     ),
                   )
                 ],

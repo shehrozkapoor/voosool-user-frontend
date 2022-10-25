@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:voosool_flutter/screens/desktop_web_view/home.dart';
+import 'package:voosool_flutter/screens/mobile_view/about_screen.dart';
 import 'package:voosool_flutter/screens/mobile_view/food_item.dart';
 import 'package:voosool_flutter/screens/mobile_view/forget_psasword.dart';
 import 'package:voosool_flutter/screens/mobile_view/home_location_screen.dart';
@@ -25,7 +26,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primaryColor: primary,
       ),
-      home: const SplashScreen(),
+      home: const AboutScreen(),
     );
   }
 }
