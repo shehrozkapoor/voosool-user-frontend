@@ -9,6 +9,8 @@ import 'package:voosool_flutter/theme.dart';
 import 'package:voosool_flutter/utils/components.dart';
 import 'package:voosool_flutter/utils/functions.dart';
 
+import 'home_location_screen.dart';
+
 class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
@@ -80,7 +82,7 @@ class _LoginScreenState extends State<LoginScreen> {
                           ),
                         ),
                         child: ElevatedButton(
-                            onPressed: () => {ReplaceScreen(context, Homepage())},
+                            onPressed: () => {ReplaceScreen(context, const HomeLocationScreen())},
                             style: ButtonStyle(
                               shape: MaterialStateProperty.all<
                                   RoundedRectangleBorder>(

@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:voosool_flutter/screens/desktop_web_view/home.dart';
 import 'package:voosool_flutter/screens/mobile_view/food_item.dart';
 import 'package:voosool_flutter/screens/mobile_view/forget_psasword.dart';
+import 'package:voosool_flutter/screens/mobile_view/home_location_screen.dart';
+import 'package:voosool_flutter/screens/mobile_view/home_view.dart';
 import 'package:voosool_flutter/screens/mobile_view/login_screen.dart';
 import 'package:voosool_flutter/screens/mobile_view/signup_form.dart';
 import 'package:voosool_flutter/screens/splash_screen.dart';
