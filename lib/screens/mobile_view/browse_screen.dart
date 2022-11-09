@@ -21,7 +21,7 @@ class _BrowseScreenState extends State<BrowseScreen> {
           Column(
             children: [
               TopRestaurants(context),
-              FoodMenus(context),
+              FoodMenus(context, foods: List.empty()),
             ],
           )
         ],

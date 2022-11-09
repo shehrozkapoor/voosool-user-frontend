@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:voosool_flutter/screens/mobile_view/forget_psasword.dart';
-import 'package:voosool_flutter/screens/mobile_view/login_screen.dart';
-import 'package:voosool_flutter/screens/mobile_view/signup_form.dart';
-import 'package:voosool_flutter/screens/splash_screen.dart';
+import 'package:voosool_flutter/screens/website_view/screens/home_screen.dart';
 import 'package:voosool_flutter/theme.dart';
 
 void main() {
@@ -16,11 +13,12 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Vasool',
+      debugShowCheckedModeBanner: false,
+      title: 'Vosool',
       theme: ThemeData(
         primaryColor: primary,
       ),
-      home: SplashScreen(),
+      home: const WebsiteHomeScreen(),
     );
   }
 }

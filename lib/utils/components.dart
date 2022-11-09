@@ -1,30 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:voosool_flutter/models/food.dart' as FoodModel;
+import 'package:voosool_flutter/utils/functions.dart';
+import 'package:voosool_flutter/screens/mobile_view/food_item_detail.dart';
 
 Container SocialSignupButton(String _with, String icon) {
   return Container(
-    margin: EdgeInsets.only(top: 10),
+    margin: const EdgeInsets.only(top: 10),
     height: 50,
     decoration: BoxDecoration(
       borderRadius: BorderRadius.circular(
         10,
       ),
     ),
-    child: ElevatedButton(
-      onPressed: () => {},
-      style: ButtonStyle(
-        shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-          RoundedRectangleBorder(
-            borderRadius: BorderRadius.circular(30.0),
-          ),
-        ),
-        backgroundColor: MaterialStateColor.resolveWith(
-          (states) => Colors.black,
-        ),
-      ),
+    child: MaterialButton(
+      onPressed: (){},
+      color: Colors.black,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(30)),
       child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          Text(_with, textAlign: TextAlign.center),
+          Text(_with, textAlign: TextAlign.center, style: const TextStyle(color: Colors.white, fontSize: 17),),
           Image.asset(icon),
         ],
       ),
@@ -34,16 +29,71 @@ Container SocialSignupButton(String _with, String icon) {
 
 Container CustomField(String Name, Function action) {
   return Container(
-    margin: EdgeInsets.only(top: 10),
+    margin: const EdgeInsets.only(top: 10),
     child: Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Text(
           Name,
+          style: const TextStyle(fontWeight: FontWeight.w500),
+        ),
+        const SizedBox(height: 5.0,),
+        TextFormField(
+          decoration: InputDecoration(
+            contentPadding: const EdgeInsets.only(
+              left: 15,
+              right: 15,
+            ),
+            border: OutlineInputBorder(
+              borderSide: const BorderSide(
+                color: Colors.white,
+              ),
+              borderRadius: BorderRadius.circular(50),
+            ),
+              focusedBorder:  OutlineInputBorder(
+                borderSide: const BorderSide(color: Colors.white),
+                borderRadius: BorderRadius.circular(50),
+              ),
+              enabledBorder:  OutlineInputBorder(
+                borderSide: const BorderSide(color: Colors.white),
+                borderRadius: BorderRadius.circular(50),
+              )
+          ),
+          // The validator receives the text that the user has entered.
+          validator: (value) {
+            if (value == null || value.isEmpty) {
+              return 'Please enter some text';
+            }
+            return null;
+          },
+          onChanged: (value) => action(value),
+        ),
+      ],
+    ),
+  );
+}
+
+
+
+Container CustomField2(String Name, Function action) {
+  return Container(
+    margin: EdgeInsets.only(top: 10),
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Container(
+          margin: EdgeInsets.only(top: 10, bottom: 10),
+          child: Text(
+            Name,
+            style: TextStyle(fontSize: 18),
+          ),
         ),
         TextFormField(
           decoration: InputDecoration(
-            contentPadding: const EdgeInsets.only(left: 15, right: 15),
+            contentPadding: const EdgeInsets.only(
+              left: 15,
+              right: 15,
+            ),
             border: OutlineInputBorder(
               borderSide: const BorderSide(
                 color: Colors.white,
@@ -296,9 +346,16 @@ Container Restaurant(BuildContext context, String name, String image) {
               Radius.circular(20),
             ),
           ),
-          child: Image.asset(
-            image,
-            fit: BoxFit.cover,
+          child: ClipRRect(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20),
+              topRight: Radius.circular(20),
+            ),
+            child: Image.asset(
+              image,
+              width: MediaQuery.of(context).size.width,
+              fit: BoxFit.fill,
+            ),
           ),
         ),
         Text(name)
@@ -307,7 +364,7 @@ Container Restaurant(BuildContext context, String name, String image) {
   );
 }
 
-Widget FoodMenus(BuildContext context) {
+Widget FoodMenus(BuildContext context, {required List<FoodModel.Food> foods}) {
   return Column(
     children: [
       Container(
@@ -323,16 +380,13 @@ Widget FoodMenus(BuildContext context) {
       ),
       Container(
         width: MediaQuery.of(context).size.width,
-        height: MediaQuery.of(context).size.height * .81,
+        height: MediaQuery.of(context).size.height * .80,
         child: GridView.count(
           crossAxisCount: 2,
           children: List.generate(
             4,
             (index) {
-              return Center(
-                child:
-                    Restaurant(context, "Product 1", "assets/restaurant.png"),
-              );
+              return Menu(context, "Product 1", "assets/restaurant.png");
             },
           ),
         ),
@@ -341,22 +395,96 @@ Widget FoodMenus(BuildContext context) {
   );
 }
 
-Container Menu(BuildContext context, String name, String image) {
+Widget Menu(BuildContext context, String name, String image) {
+  return GestureDetector(
+    onTap: () => {
+      NextScreen(context, FoodDetail()),
+    },
+    child: Container(
+      decoration: const BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.all(Radius.circular(20)),
+      ),
+      margin: EdgeInsets.all(20),
+      width: MediaQuery.of(context).size.width * .40,
+      child: Column(
+        children: [
+          Container(
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(
+                Radius.circular(
+                  20,
+                ),
+              ),
+            ),
+            child: ClipRRect(
+              borderRadius: BorderRadius.only(
+                topLeft: Radius.circular(20),
+                topRight: Radius.circular(20),
+              ),
+              child: Image.asset(
+                image,
+                width: MediaQuery.of(context).size.width,
+                fit: BoxFit.fill,
+              ),
+            ),
+          ),
+          Text(
+            name,
+          )
+        ],
+      ),
+    ),
+  );
+}
+
+class CustomCheckbox extends StatefulWidget {
+  CustomCheckbox({super.key, required this.text});
+  String text;
+  bool isChecked = false;
+
+  @override
+  State<CustomCheckbox> createState() => _CustomCheckboxState();
+}
+
+class _CustomCheckboxState extends State<CustomCheckbox> {
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      children: [
+        Checkbox(
+          shape:
+              RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+          value: widget.isChecked,
+          onChanged: (bool? boolvalue) {
+            setState(() {
+              widget.isChecked = !widget.isChecked;
+            });
+          },
+          // splashRadius: 50,
+        ),
+        Text(widget.text),
+      ],
+    );
+  }
+}
+
+Widget Food(BuildContext context, String name, String image) {
   return Container(
     decoration: const BoxDecoration(
-      color: Colors.white,
-      borderRadius: BorderRadius.all(Radius.circular(20)),
+      // color: Colors.red,
+      borderRadius: BorderRadius.all(
+        Radius.circular(20),
+      ),
     ),
-    margin: EdgeInsets.all(20),
-    width: MediaQuery.of(context).size.width * .40,
+    margin: const EdgeInsets.all(5),
+    width: MediaQuery.of(context).size.width * .45,
     child: Column(
       children: [
         Container(
           decoration: const BoxDecoration(
             borderRadius: BorderRadius.all(
-              Radius.circular(
-                20,
-              ),
+              Radius.circular(20),
             ),
           ),
           child: Image.asset(
@@ -364,9 +492,7 @@ Container Menu(BuildContext context, String name, String image) {
             fit: BoxFit.cover,
           ),
         ),
-        Text(
-          name,
-        )
+        Text(name)
       ],
     ),
   );

@@ -6,6 +6,8 @@ import 'package:voosool_flutter/theme.dart';
 import 'package:voosool_flutter/utils/components.dart';
 import 'package:voosool_flutter/utils/functions.dart';
 
+import '../../Constants/constant.dart';
+
 class SignupForm extends StatefulWidget {
   const SignupForm({super.key});
 
@@ -39,13 +41,14 @@ class _SignupFormState extends State<SignupForm> {
               ),
               child: Form(
                 key: _formKey,
-                child: Column(
+                child: ListView(
                   children: <Widget>[
                     CustomField("Full Name", (value) => {}),
                     CustomField("Email", (value) => {}),
                     CustomField("Phone number", (value) => {}),
-                    CustomField("Password", (value) => {}),
-                    CustomField("Confirm password", (value) => {}),
+                    passwordTextField("Password", (value) => {}),
+                    confirmPassword("Confirm password", (value) => {}),
+                    const SizedBox(height: 7,),
                     Container(
                       width: 200,
                       margin: const EdgeInsets.only(top: 10),
@@ -65,41 +68,73 @@ class _SignupFormState extends State<SignupForm> {
                               ),
                             ),
                             backgroundColor: MaterialStateColor.resolveWith(
-                              (states) => Colors.black,
+                                  (states) => Colors.black,
                             ),
                           ),
                           child: const Text("Signup with Email.")),
                     ),
                     Container(
                       margin: const EdgeInsets.only(top: 10, bottom: 10),
-                      child: const Text("Or"),
+                      child: const Center(child: Text("Or")),
+                    ),
+                    // SocialSignupButton(
+                    //   "Continue with Google",
+                    //   "assets/google.png",
+                    // ),
+                    // TODO Google Sign UP Button
+                    Padding(
+                      padding: const EdgeInsets.symmetric(horizontal: 15),
+                      child: MaterialButton(
+                        onPressed: () {},
+                        color: Colors.black,
+                        height: 50,
+                        minWidth: 100,
+                        shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Row(
+                          children: [
+                            const Text(
+                              'Continue with Google',
+                              textAlign: TextAlign.center,
+                              style:
+                              TextStyle(color: Colors.white, fontSize: 17),
+                            ),
+                            const SizedBox(
+                              width: 10.0,
+                            ),
+                            Image.asset('assets/google.png'),
+                          ],
+                        ),
+                      ),
                     ),
                     SocialSignupButton(
-                      "Signup with Google",
-                      "assets/google.png",
-                    ),
-                    SocialSignupButton(
-                      "Signup with Facebook",
+                      "Continue with Facebook",
                       "assets/facebook.png",
                     ),
                     Container(
-                      margin: EdgeInsets.only(top: 10),
+                      margin: const EdgeInsets.only(top: 15),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          const Text("Already have an account? "),
+                          const Text(
+                            "Got an account? ",
+                            style: TextStyle(
+                                fontWeight: FontWeight.w500, fontSize: 15),
+                          ),
                           GestureDetector(
                             onTap: () => {
                               ReplaceScreen(
                                 context,
-                                LoginScreen(),
+                                const LoginScreen(),
                               ),
                             },
                             child: const Text(
-                              "Login",
+                              "log in",
                               style: TextStyle(
-                                decoration: TextDecoration.underline,
-                              ),
+                                  decoration: TextDecoration.underline,
+                                  fontWeight: FontWeight.w500,
+                                  fontSize: 15),
                             ),
                           )
                         ],
